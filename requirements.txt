@@ -1,7 +1,8 @@
 streamlit
 chromadb==0.5.23
-sentence-transformers
+sentence-transformers==3.0.1
 pymupdf
 python-docx
 groq
 torch
+protobuf==3.20.3
