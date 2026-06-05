@@ -4,7 +4,7 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 from groq import Groq
 import uuid
-
+import os
 
 class RAGEngine:
 
@@ -18,7 +18,13 @@ class RAGEngine:
             api_key=groq_api_key
         )
 
-        self.chroma_client = chromadb.Client()
+        # Create local database folder
+        os.makedirs("/tmp/chroma_db", exist_ok=True)
+
+        # Persistent ChromaDB
+        self.chroma_client = chromadb.PersistentClient(
+            path="/tmp/chroma_db"
+        )
 
         self.collection = None
 
